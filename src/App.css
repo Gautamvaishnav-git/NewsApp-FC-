@@ -3,5 +3,62 @@
 @tailwind utilities; */
 
 :root {
-  --mainBg: hsl(60, 10, 30);
+  --mainBg: #16213e;
+  --primaryColor: #0f3460;
+  --secondaryColor: #e94560;
+  --textColor: #fff;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: var(--mainBg);
+}
+
+.primaryBg {
+  background-color: var(--primaryColor);
+  color: var(--textColor);
+}
+
+.Light,
+.Green,
+.Blue {
+  appearance: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  cursor: pointer;
+  border-radius: 100%;
+  outline-offset: 2px;
+  outline: 2px solid var(--radio-color);
+}
+
+.color-picker input[type="radio"]:checked {
+  background-color: var(--radio-color);
+}
+
+.color-picker input[type="radio"].Light {
+  --radio-color: gray;
+}
+
+.color-picker input[type="radio"].Green {
+  --radio-color: #4e9f3d;
+}
+
+.color-picker input[type="radio"].Blue {
+  --radio-color: #0f3460;
+}
+
+:root:has(.Light:checked) {
+  --mainBg: hsl(0, 0%, 90%);
+  --primaryColor: hsl(0, 0%, 100%);
+  --secondaryColor: #e94560;
+  --textColor: black !important;
+}
+
+:root:has(.Green:checked) {
+  --mainBg: #062925;
+  --primaryColor: #044a42;
+  --secondaryColor: #e94560;
+  --textColor: #b8e1dd !important;
 }
