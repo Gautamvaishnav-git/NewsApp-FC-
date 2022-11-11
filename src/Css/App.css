@@ -3,10 +3,10 @@
 @tailwind utilities; */
 
 :root {
-  --mainBg: #16213e;
-  --primaryColor: #0f3460;
-  --secondaryColor: #e94560;
-  --textColor: #fff;
+  --mainBg: #060930;
+  --primaryColor: #333456;
+  --textColor: #f4abc4;
+  --secondaryColor: #595b83;
 }
 
 body,
@@ -14,6 +14,7 @@ html {
   width: 100%;
   height: 100%;
   background: var(--mainBg);
+  scroll-behavior: smooth;
 }
 
 .primaryBg {
@@ -42,7 +43,7 @@ html {
 }
 
 .color-picker input[type="radio"].Green {
-  --radio-color: #4e9f3d;
+  --radio-color: #98a8f8;
 }
 
 .color-picker input[type="radio"].Blue {
@@ -57,8 +58,26 @@ html {
 }
 
 :root:has(.Green:checked) {
-  --mainBg: #062925;
-  --primaryColor: #044a42;
-  --secondaryColor: #e94560;
-  --textColor: #b8e1dd !important;
+  --mainBg: #98a8f8;
+  --primaryColor: #bccef8;
+  --secondaryColor: #cdfcf6;
+  --textColor: #000 !important;
+  --radio-color: #98a8f8;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--secondaryColor);
+  margin: 0.5rem 0;
+  padding: 0.2rem 0.8rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--textColor);
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--secondaryColor);
+  color: var(--textColor);
 }

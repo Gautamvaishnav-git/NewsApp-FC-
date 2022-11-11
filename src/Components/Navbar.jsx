@@ -1,18 +1,15 @@
-const Navbar = () => {
+import { Link } from "react-router-dom";
+
+const Navbar = (props) => {
   return (
     <>
-      <header className="primaryBg w-full">
-        <nav className="">
-          <ul className="flex gap-3 w-full capitalize primaryBg px-3 py-2 w-full">
-            {[
-              ["home", "/home", "key1"],
-              ["about", "/about", "key2"],
-              ["contact", "/contact", "key3"],
-              ["services", "/services", "key4"],
-            ].map(([title, path, key]) => {
+      <header className="primaryBg w-full sticky top-0 shadow-md">
+        <nav>
+          <ul className="flex gap-3 w-full capitalize primaryBg px-3 py-2 w-full justify-center">
+            {props.categories.map((elem) => {
               return (
-                <li key={key}>
-                  <a href={path}>{title}</a>
+                <li key={elem}>
+                  <Link to={`/${elem}`}>{elem}</Link>
                 </li>
               );
             })}
