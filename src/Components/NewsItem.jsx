@@ -3,13 +3,14 @@ import { useState } from "react";
 const NewsItem = (props) => {
   const { urlToImage, publishedAt, url, title, description } = props.data;
   const [publishDate, setPublishDate] = useState(new Date(publishedAt));
+
   return (
     <>
       <div
-        className="card shadow-lg rounded overflow-hidden primaryBg w-full sm:w-2/5 md:w-1/4 xl:w-1/5 grow h-fit"
-        key={"hi"}
+        className="card shadow-lg rounded primaryBg w-full sm:w-2/5 md:w-1/4 xl:w-1/5 grow h-100"
+        key={title}
       >
-        <div className="img w-full h-3/5 overflow-hidden border-b border-current">
+        <div className="img w-full h-fit overflow-hidden border-b border-current">
           <img
             src={
               urlToImage !== null

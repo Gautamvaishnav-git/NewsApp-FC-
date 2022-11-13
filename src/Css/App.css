@@ -3,9 +3,9 @@
 @tailwind utilities; */
 
 :root {
-  --mainBg: #060930;
-  --primaryColor: #333456;
-  --textColor: #f4abc4;
+  --mainBg: #1c1c27;
+  --primaryColor: #28293d;
+  --textColor: #31c786;
   --secondaryColor: #595b83;
 }
 
@@ -43,26 +43,26 @@ html {
 }
 
 .color-picker input[type="radio"].Green {
-  --radio-color: #98a8f8;
+  --radio-color: #ca4e79;
 }
 
 .color-picker input[type="radio"].Blue {
-  --radio-color: #0f3460;
+  --radio-color: #28293d;
 }
 
 :root:has(.Light:checked) {
   --mainBg: hsl(0, 0%, 90%);
   --primaryColor: hsl(0, 0%, 100%);
-  --secondaryColor: #e94560;
+  --secondaryColor: #d1d1d1;
   --textColor: black !important;
 }
 
 :root:has(.Green:checked) {
-  --mainBg: #98a8f8;
-  --primaryColor: #bccef8;
-  --secondaryColor: #cdfcf6;
-  --textColor: #000 !important;
-  --radio-color: #98a8f8;
+  --mainBg: #513252;
+  --primaryColor: #7a4069;
+  --secondaryColor: #ca4e79;
+  --textColor: #ffc18e !important;
+  --radio-color: #ca4e79;
 }
 
 .btn {
@@ -80,4 +80,13 @@ html {
 .btn:hover {
   background: var(--secondaryColor);
   color: var(--textColor);
+}
+
+.rotate {
+  background: rgb(21, 14, 29);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

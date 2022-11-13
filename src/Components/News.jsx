@@ -3,16 +3,19 @@ import NewsItem from "./NewsItem";
 
 const News = (props) => {
   const [data, setData] = useState([]);
-  const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=8efeaa5a0fd94cf1b0896e4eb6341d94&pageSize=8`;
+  const [loading, setLoading] = useState(false);
+  const url = `https://newsapi.org/v2/top-headlines?country=in&category=${props.category}&apiKey=${props.API_KEY}&pageSize=8`;
 
   useEffect(() => {
     const getdata = async (URL) => {
+      setLoading(true);
       let response = await fetch(URL);
       let getData = await response.json();
       if (getData.articles) {
         setData(getData.articles);
       } else {
         setData("sorry news are not available");
+        setLoading(true);
       }
     };
     getdata(url);
@@ -24,7 +27,7 @@ const News = (props) => {
         {data.map((element) => {
           return (
             <>
-              <NewsItem data={element} />
+              <NewsItem data={element} loader={loading} />
             </>
           );
         })}
