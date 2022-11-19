@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 const NewsItem = (props) => {
-  const { urlToImage, publishedAt, url, title, description } = props.data;
-  const [publishDate, setPublishDate] = useState(new Date(publishedAt));
+  const { author, urlToImage, publishedAt, url, title, description } =
+    props.data;
+  const publishDate = new Date(publishedAt);
 
   return (
     <>
-      <div
+      <section
         className="card shadow-lg rounded primaryBg w-full sm:w-2/5 md:w-1/4 xl:w-1/5 grow h-100"
-        key={title}
+        key={author}
       >
         <div className="img w-full h-fit overflow-hidden border-b border-current">
           <img
@@ -35,7 +36,7 @@ const NewsItem = (props) => {
             read more..
           </a>
         </div>
-      </div>
+      </section>
     </>
   );
 };

@@ -90,3 +90,14 @@ html {
   align-items: center;
   justify-content: center;
 }
+
+.loader {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
