@@ -20,17 +20,13 @@ const News = (props) => {
       setLoading(false);
     };
     getdata(url);
-  }, []);
+  }, [props]);
   return (
     <>
       <Loader loader={loading} />
       <div className="cards flex gap-3 flex-wrap px-3 py-4 w-full 2xl:w-3/4 2xl:mx-auto">
         {data.map((element, index) => {
-          return (
-            <>
-              <NewsItem data={element} key={index} />
-            </>
-          );
+          return <NewsItem data={element} key={index} />;
         })}
       </div>
     </>

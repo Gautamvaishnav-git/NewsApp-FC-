@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Css/App.css";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const country = "in";
+  const [countryName, setCountryName] = useState("in");
+  const getCountry = (data) => {
+    setCountryName(data);
+  };
   const apikey = import.meta.env.VITE_API_KEY;
   const categories = [
     "general",
@@ -19,7 +22,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar categories={categories} />
+        <Navbar categories={categories} getCountry={getCountry} />
         <Routes>
           <Route
             path=""
@@ -28,26 +31,23 @@ function App() {
                 key={"speacial"}
                 apikey={apikey}
                 category={"general"}
-                country={country}
+                country={countryName}
               />
             }
           />
           {categories.map((category, index) => {
             return (
-              <>
                 <Route
-                  key={category}
+                  key={index}
                   path={category}
                   element={
                     <News
-                      key={index}
                       category={category}
                       apikey={apikey}
-                      country={country}
+                      country={countryName}
                     />
                   }
                 />
-              </>
             );
           })}
         </Routes>

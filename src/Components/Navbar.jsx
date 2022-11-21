@@ -1,16 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState("in");
+  useEffect(() => {
+    props.getCountry(country);
+  });
+  const countries = [
+    ["in", "india"],
+    ["us", "usa"],
+    ["ru", "russia"],
+    ["jp", "japan"],
+    ["ch", "Switzerland"],
+    ["gb", "United Kingdom"],
+    ["au", "Austrilla"],
+    ["it", "italy"],
+  ];
+  const chooeseCountry = (e) => {
+    setCountry(e.target.value);
+  };
   return (
     <>
       <header className="primaryBg w-full sticky top-0 shadow-md">
         <nav>
           <ul className="flex gap-3 w-full capitalize primaryBg px-3 py-2 w-full justify-center ">
-            {props.categories.map((elem) => {
+            {props.categories.map((elem, index) => {
               return (
-                <li key={elem}>
+                <li key={index}>
                   <Link to={`/${elem}`}>{elem}</Link>
                 </li>
               );
@@ -19,14 +35,15 @@ const Navbar = (props) => {
               name="country"
               className="outline-0 primaryBg capitalize border border-current rounded px-2 ml-2 text-center"
               id="country"
-              onChange={(e) => {
-                setCountry(e.target.value);
-                console.log(country);
-              }}
+              onChange={chooeseCountry}
             >
-              <option value="in">india</option>
-              <option value="us">usa</option>
-              <option value="jp">japan</option>
+              {countries.map(([countryCode, countryName]) => {
+                return (
+                  <option value={countryCode} key={countryCode}>
+                    {countryName}
+                  </option>
+                );
+              })}
             </select>
           </ul>
         </nav>
