@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBeer } from "react-icons/fa";
+import { FiAlignRight } from "react-icons/fi";
 
 const Navbar = (props) => {
   const [country, setCountry] = useState("in");
+  const [navToggle, setNavToggle] = useState("flex");
+
   useEffect(() => {
     props.getCountry(country);
   });
@@ -22,8 +26,22 @@ const Navbar = (props) => {
   return (
     <>
       <header className="primaryBg w-full sticky top-0 shadow-md">
+        <div className="sm:hidden bars w-full flex justify-end px-2">
+          <button
+            className="text-2xl py-2"
+            onClick={() => {
+              if (navToggle === "none") setNavToggle("flex");
+              if (navToggle !== "none") setNavToggle("none");
+            }}
+          >
+            <FiAlignRight />
+          </button>
+        </div>
         <nav>
-          <ul className="flex gap-3 w-full capitalize primaryBg px-3 py-2 w-full justify-center ">
+          <ul
+            className="flex sm:flex-row sm:gap-3 gap-1 w-full capitalize primaryBg px-3 py-2 w-full justify-center flex-col sm:items-center items:end"
+            style={{ display: navToggle }}
+          >
             {props.categories.map((elem, index) => {
               return (
                 <li key={index}>
@@ -33,7 +51,7 @@ const Navbar = (props) => {
             })}
             <select
               name="country"
-              className="outline-0 primaryBg capitalize border border-current rounded px-2 ml-2 text-center"
+              className="outline-0 primaryBg capitalize border border-current rounded sm:px-2 sm:ml-2 text-center mt-2"
               id="country"
               onChange={chooeseCountry}
             >
@@ -47,9 +65,9 @@ const Navbar = (props) => {
             </select>
           </ul>
         </nav>
-        <form className="flex flex-col gap-5 bg-slate-100 rounded-l-lg px-3 py-4 w-fit justify-center fixed z-10 top-6 right-0 color-picker">
+        <form className="flex sm:flex-col rounded-l-lg px-3 sm:py-4 justify-center fixed z-10 sm:top-6 sm:right-0 top-3 color-picker flex-row shadow-md gap-5">
           <input type="radio" name="theme" id="Light" className="Light" />
-          <input type="radio" name="theme" id="Green" className="Green" />
+          <input type="radio" name="theme" id="Middle" className="Middle" />
           <input
             type="radio"
             name="theme"

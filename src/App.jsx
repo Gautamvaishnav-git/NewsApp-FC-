@@ -37,17 +37,17 @@ function App() {
           />
           {categories.map((category, index) => {
             return (
-                <Route
-                  key={index}
-                  path={category}
-                  element={
-                    <News
-                      category={category}
-                      apikey={apikey}
-                      country={countryName}
-                    />
-                  }
-                />
+              <Route
+                key={index}
+                path={category}
+                element={
+                  <News
+                    category={category}
+                    apikey={apikey}
+                    country={countryName}
+                  />
+                }
+              />
             );
           })}
         </Routes>

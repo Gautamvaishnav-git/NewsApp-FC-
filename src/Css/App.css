@@ -7,7 +7,6 @@
   --primaryColor: #28293d;
   --textColor: #31c786;
   --secondaryColor: #595b83;
-  --mainBgVal: 49, 199, 134;
 }
 
 body,
@@ -28,10 +27,13 @@ html {
 
 ::-webkit-scrollbar-track {
   box-shadow: inset 1px 2px 10px var(--primaryColor);
+  border: 1px dotted var(--textColor);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--mainBgVal), 0.5 );
+  background: transparent;
+  border-left: 2.9px solid var(--textColor);
+  border-right: 2.9px solid var(--textColor);
 }
 
 ::-webkit-scrollbar-button {
@@ -44,7 +46,7 @@ html {
 }
 
 .Light,
-.Green,
+.Middle,
 .Blue {
   appearance: none;
   width: 0.7rem;
@@ -55,6 +57,10 @@ html {
   outline: 2px solid var(--radio-color);
 }
 
+.color-picker {
+  background: var(--primaryColor);
+}
+
 .color-picker input[type="radio"]:checked {
   background-color: var(--radio-color);
 }
@@ -63,12 +69,12 @@ html {
   --radio-color: gray;
 }
 
-.color-picker input[type="radio"].Green {
-  --radio-color: #ca4e79;
+.color-picker input[type="radio"].Middle {
+  --radio-color: #daa64c;
 }
 
 .color-picker input[type="radio"].Blue {
-  --radio-color: #28293d;
+  --radio-color: #31c786;
 }
 
 :root:has(.Light:checked) {
@@ -78,19 +84,15 @@ html {
   --textColor: black !important;
 }
 
-:root:has(.Green:checked) {
-  --mainBg: #513252;
-  --primaryColor: #7a4069;
-  --secondaryColor: #ca4e79;
-  --textColor: #ffc18e !important;
-  --radio-color: #ca4e79;
+:root:has(.Middle:checked) {
+  --mainBg: #2f2f3d;
+  --primaryColor: #3e4256;
+  --secondaryColor: #daa64c;
+  --textColor: #fff !important;
 }
 
 .btn {
-  display: inline-block;
   border: 1px solid var(--secondaryColor);
-  margin: 0.5rem 0;
-  padding: 0.2rem 0.8rem;
   border-radius: 2px;
   font-size: 0.9rem;
   text-transform: capitalize;
