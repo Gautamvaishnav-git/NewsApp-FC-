@@ -1,42 +1,53 @@
-import { useState } from "react";
-
 const NewsItem = (props) => {
   const { author, urlToImage, publishedAt, url, title, description } =
     props.data;
-  const publishDate = new Date(publishedAt);
-
   return (
     <>
-      <section
-        className="card grid grid-rows-1 shadow-lg rounded-md primaryBg w-full sm:w-2/5 md:w-1/4 xl:w-1/5 grow h-100 bg-blend-multiply bg-cover overflow-hidden"
-        key={author}
-      >
-        <div className="img w-full h-fit rounded shadow-md overflow-hidden">
-          <img
-            src={
-              urlToImage !== null
-                ? urlToImage
-                : "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg"
-            }
-            alt=""
-            draggable="false"
-            className="w-full"
-          />
+      <div className="max-w-auto grow w-full sm:w-60 h-auto hover:shadow-xl hover:scale-[1.01]  duration-200 ease-in">
+        <div className="flex flex-wrap h-full">
+          <div className="h-full w-full">
+            <div className="h-full border border-gray-500/25 rounded-lg overflow-hidden">
+              <img
+                className="lg:h-48 md:h-36 w-full object-cover object-center"
+                src={
+                  urlToImage !== null
+                    ? urlToImage
+                    : "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found-300x169.jpg"
+                }
+                alt="blog"
+              />
+              <div className="md:p-6 p-3">
+                <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
+                  {new Date(publishedAt).toUTCString()}
+                </h2>
+                <h1 className="title-font text-lg font-medium text-current mb-3">
+                  {title.slice(0, 30)}
+                </h1>
+                <p className="leading-relaxed mb-3 text-gray-300 opacity-70">
+                  {description ? description.slice(0, 100) : "Description"}...
+                </p>
+                <div className="flex items-center flex-wrap">
+                  <a href={url} className="WebButton" target="blank">
+                    Read More
+                    <svg
+                      className="w-4 h-4 ml-2 arrow"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="bottom px-2 py-2 flex flex-col gap-1">
-          <p>
-            <span>{`${publishDate.getDate()}/${publishDate.getMonth()}/${publishDate.getFullYear()}`}</span>
-            <span></span>
-          </p>
-          <h3 className="title text-md font-medium">{title.slice(0, 30)}...</h3>
-          <p className="text-sm">
-            {description ? description.slice(0, 90) : "Description"}...
-          </p>
-          <a href={url} target="_blank" className="btn py-1 my-2 text-center">
-            read more..
-          </a>
-        </div>
-      </section>
+      </div>
     </>
   );
 };

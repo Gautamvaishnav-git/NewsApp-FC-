@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaBeer } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import { FiAlignRight } from "react-icons/fi";
 
 const Navbar = (props) => {
   const [country, setCountry] = useState("in");
   const [navToggle, setNavToggle] = useState("flex");
+
+  const toggleFunc = () => {
+    if (navToggle === "none") setNavToggle("flex");
+    if (navToggle !== "none") setNavToggle("none");
+  };
 
   useEffect(() => {
     props.getCountry(country);
@@ -17,47 +21,54 @@ const Navbar = (props) => {
     ["jp", "japan"],
     ["ch", "Switzerland"],
     ["gb", "United Kingdom"],
-    ["au", "Austrilla"],
+    ["au", "Australia"],
     ["it", "italy"],
   ];
-  const chooeseCountry = (e) => {
+  const chooseCountry = (e) => {
     setCountry(e.target.value);
   };
   return (
     <>
-      <header className="primaryBg w-full sticky top-0 shadow-md">
-        <div className="sm:hidden bars w-full flex justify-end px-2">
-          <button
-            className="text-2xl py-2"
-            onClick={() => {
-              if (navToggle === "none") setNavToggle("flex");
-              if (navToggle !== "none") setNavToggle("none");
-            }}
-          >
+      <header className="w-full sticky top-0 z-[1000] text-current backdrop-blur-md bg-gradient-to-b from-gray-900 to-gray-600/10">
+        <div className="sm:hidden bars w-full flex flex-wrap justify-end px-2">
+          <button className="text-2xl py-2" onClick={toggleFunc}>
             <FiAlignRight />
           </button>
         </div>
         <nav>
           <ul
-            className="flex sm:flex-row sm:gap-3 gap-1 w-full capitalize primaryBg px-3 py-2 w-full justify-center flex-col sm:items-center items:end"
+            className="flex sm:flex-row flex-wrap sm:gap-3 gap-1 w-full capitalize px-3 py-4 w-full justify-center flex-col sm:items-center items:end"
             style={{ display: navToggle }}
           >
             {props.categories.map((elem, index) => {
               return (
                 <li key={index}>
-                  <Link to={`/${elem}`}>{elem}</Link>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "navItem relative text-teal-400"
+                        : "inactive relative navItem  text-gray-400"
+                    }
+                    to={`/${elem}`}
+                  >
+                    {elem}
+                  </NavLink>
                 </li>
               );
             })}
             <select
               name="country"
-              className="outline-0 primaryBg capitalize border border-current rounded sm:px-2 sm:ml-2 text-center mt-2"
+              className="outline-0 bg-transparent capitalize rounded sm:px-2 sm:ml-2 text-center mt-2 border border-gray-500/30"
               id="country"
-              onChange={chooeseCountry}
+              onChange={chooseCountry}
             >
               {countries.map(([countryCode, countryName]) => {
                 return (
-                  <option value={countryCode} key={countryCode}>
+                  <option
+                    value={countryCode}
+                    key={countryCode}
+                    className="bg-gray-900"
+                  >
                     {countryName}
                   </option>
                 );
@@ -65,17 +76,6 @@ const Navbar = (props) => {
             </select>
           </ul>
         </nav>
-        <form className="flex sm:flex-col rounded-l-lg px-3 sm:py-4 justify-center fixed z-10 sm:top-6 sm:right-0 top-3 color-picker flex-row shadow-md gap-5">
-          <input type="radio" name="theme" id="Light" className="Light" />
-          <input type="radio" name="theme" id="Middle" className="Middle" />
-          <input
-            type="radio"
-            name="theme"
-            id="Blue"
-            className="Blue"
-            defaultChecked
-          />
-        </form>
       </header>
     </>
   );

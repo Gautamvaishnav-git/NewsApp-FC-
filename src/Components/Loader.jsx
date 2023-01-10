@@ -3,19 +3,16 @@ const Loader = (props) => {
   return (
     <>
       <div
-        className=""
-        style={{ display: `${props.loader ? "block" : "none"}` }}
+        className="w-full h-[100vh] fixed top-0 items-center justify-center z-[100] bg-gray-900"
+        style={{ display: `${props.loader ? "flex" : "none"}` }}
       >
-        <div className="loader">
-          <Dna
-            visible={props.loader}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-        </div>
+        <Dna
+          visible={props.loader}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperClass="dna-wrapper"
+        />
       </div>
     </>
   );

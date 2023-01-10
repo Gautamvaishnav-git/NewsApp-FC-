@@ -1,3 +1,56 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+    @apply bg-gradient-to-l from-cyan-900 via-gray-800 to-gray-900 text-teal-400;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-current;
+    border-radius: 1rem;
+  }
+  .navItem:hover::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    border-bottom: 1px solid currentColor;
+    animation: navBorder 0.3s ease-in;
+  }
+  .WebButton {
+    @apply inline-flex items-center md:mb-2 lg:mb-0 px-4 py-2 text-current bg-gray-500/10 rounded hover:bg-cyan-500/20 duration-300;
+  }
+  .WebButton:hover > svg {
+    animation: arrow 0.7s ease infinite alternate forwards;
+  }
+  @keyframes arrow {
+    to {
+      transform: translateX(5px);
+    }
+  }
+  @keyframes navBorder {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}

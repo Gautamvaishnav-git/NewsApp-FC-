@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Css/App.css";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,7 +8,7 @@ function App() {
   const getCountry = (data) => {
     setCountryName(data);
   };
-  const apikey = import.meta.env.VITE_API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   const categories = [
     "general",
     "business",
@@ -28,8 +27,8 @@ function App() {
             path=""
             element={
               <News
-                key={"speacial"}
-                apikey={apikey}
+                key={"special"}
+                apiKey={apiKey}
                 category={"general"}
                 country={countryName}
               />
@@ -43,7 +42,7 @@ function App() {
                 element={
                   <News
                     category={category}
-                    apikey={apikey}
+                    apiKey={apiKey}
                     country={countryName}
                   />
                 }
