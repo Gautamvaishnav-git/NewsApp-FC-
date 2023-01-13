@@ -46,8 +46,8 @@ const Navbar = (props) => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? "navItem relative text-teal-400"
-                        : "inactive relative navItem  text-gray-400"
+                        ? "navItem relative text-teal-400 focus:outline-none"
+                        : "inactive relative navItem  text-gray-400 focus:outline-none"
                     }
                     to={`/${elem}`}
                   >

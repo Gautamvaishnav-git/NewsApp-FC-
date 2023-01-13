@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NewsDetail from "./Components/NewsDetail";
 
 function App() {
   const [countryName, setCountryName] = useState("in");
@@ -49,6 +50,10 @@ function App() {
               />
             );
           })}
+          <Route
+            path="News/:title"
+            element={<NewsDetail apiKey={apiKey} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

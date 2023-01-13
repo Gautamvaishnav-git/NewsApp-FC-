@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { BsArrowUpRight } from "react-icons/bs";
 const NewsItem = (props) => {
   const { author, urlToImage, publishedAt, url, title, description } =
     props.data;
@@ -17,30 +20,36 @@ const NewsItem = (props) => {
                 alt="blog"
               />
               <div className="md:p-6 p-3">
-                <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
+                <h2 className="tracking-widest text-xs title-font text-gray-400 mb-1">
                   {new Date(publishedAt).toUTCString()}
                 </h2>
+                <p className="tracking-widest text-xs title-font text-gray-300 bg-teal-400/10 p-2 inline-block my-1 rounded">
+                  Author:{" "}
+                  <span className="text-teal-400">
+                    {author ? author : "N/A"}
+                  </span>
+                </p>
                 <h1 className="title-font text-lg font-medium text-current mb-3">
                   {title.slice(0, 30)}
                 </h1>
-                <p className="leading-relaxed mb-3 text-gray-300 opacity-70">
+                <p className="leading-relaxed mb-3 text-gray-200 opacity-70">
                   {description ? description.slice(0, 100) : "Description"}...
                 </p>
-                <div className="flex items-center flex-wrap">
-                  <a href={url} className="WebButton" target="blank">
+                <div className="flex items-center flex-wrap gap-x-1">
+                  <Link
+                    to={`/News/${title}`}
+                    className="WebButton my-1 grow px-3"
+                  >
                     Read More
-                    <svg
-                      className="w-4 h-4 ml-2 arrow"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="M12 5l7 7-7 7"></path>
-                    </svg>
+                    <AiOutlineArrowRight className="mx-1" />
+                  </Link>
+                  <a
+                    href={url}
+                    className="WebButton my-1 grow px-2"
+                    target={"blank"}
+                  >
+                    Visit News
+                    <BsArrowUpRight className="mx-1" />
                   </a>
                 </div>
               </div>

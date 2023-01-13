@@ -35,7 +35,7 @@
     animation: navBorder 0.3s ease-in;
   }
   .WebButton {
-    @apply inline-flex items-center md:mb-2 lg:mb-0 px-4 py-2 text-current bg-gray-500/10 rounded hover:bg-cyan-500/20 duration-300;
+    @apply inline-flex items-center md:mb-2 lg:mb-0 px-4 py-2 text-current bg-gray-500/10 rounded hover:bg-cyan-500/20 duration-300 focus:outline-none focus:bg-cyan-500/20;
   }
   .WebButton:hover > svg {
     animation: arrow 0.7s ease infinite alternate forwards;
