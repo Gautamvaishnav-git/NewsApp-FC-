@@ -51,6 +51,7 @@ const News = (props) => {
           onChange={(e) => {
             updateState({ query: e.target.value });
           }}
+          value={states.query}
         />
         <button
           className="WebButton px-4"
@@ -63,14 +64,14 @@ const News = (props) => {
         <button
           className="WebButton px-4"
           onClick={() => {
-            updateState({ Search: "" });
+            updateState({ Search: "", query: "" });
           }}
         >
           Clear
         </button>
       </div>
       <Loader loader={states.loading} />
-      <div className="cards flex gap-5 flex-wrap px-3 py-4 w-full 2xl:w-3/4 2xl:mx-auto">
+      <div className="cards flex gap-5 flex-wrap px-3 py-4 w-fit 2xl:w-3/4 2xl:mx-auto">
         {states.NewsData &&
           states.NewsData.map((element, index) => {
             return <NewsItem data={element} key={index} />;

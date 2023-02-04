@@ -6,7 +6,7 @@ const NewsItem = (props) => {
     props.data;
   return (
     <>
-      <div className="max-w-auto grow w-full sm:w-60 h-auto hover:shadow-xl hover:scale-[1.01]  duration-200 ease-in">
+      <div className="grow w-full sm:w-60 md:w-80 h-auto hover:shadow-xl hover:scale-[1.01]  duration-200 ease-in">
         <div className="flex flex-wrap h-full">
           <div className="h-full w-full">
             <div className="h-full border border-gray-500/25 rounded-lg overflow-hidden">
